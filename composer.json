@@ -1,6 +1,6 @@
 {
-    "name": "drupal-composer/drupal-project",
-    "description": "Project template for Drupal 8 projects with composer",
+    "name": "nickveenhof/mautic-project",
+    "description": "Project template for Mautic 2 projects with composer",
     "type": "project",
     "license": "GPL-2.0-or-later",
     "authors": [
@@ -9,29 +9,15 @@
             "role": ""
         }
     ],
-    "repositories": [
-        {
-            "type": "composer",
-            "url": "https://packages.drupal.org/8"
-        }
-    ],
     "require": {
         "php": ">=7.0.8",
         "composer/installers": "^1.2",
         "cweagans/composer-patches": "^1.6.5",
-        "drupal/console": "^1.0.2",
-        "drupal/core": "^8.8.0",
-        "drupal/core-composer-scaffold": "^8.8.0",
-        "drush/drush": "^9.7.1 | ^10.0.0",
-        "vlucas/phpdotenv": "^4.0",
-        "webflo/drupal-finder": "^1.0.0",
-        "zaporylie/composer-drupal-optimizations": "^1.0"
-    },
-    "require-dev": {
-        "drupal/core-dev": "^8.8.0"
-    },
-    "conflict": {
-        "drupal/drupal": "*"
+        "mautic/core": "^8.8.0",
+        "nickveenhof/mautic-core-composer-scaffold": "^2.0",
+        "nickveenhof/drupal-finder": "^1.0.0",
+        "webmozart/path-util": "^2.3",
+        "vlucas/phpdotenv": "^4.0"
     },
     "minimum-stability": "dev",
     "prefer-stable": true,
@@ -46,35 +32,32 @@
     },
     "scripts": {
         "pre-install-cmd": [
-            "DrupalProject\\composer\\ScriptHandler::checkComposerVersion"
+            "MauticProject\\composer\\ScriptHandler::checkComposerVersion"
         ],
         "pre-update-cmd": [
-            "DrupalProject\\composer\\ScriptHandler::checkComposerVersion"
+            "MauticProject\\composer\\ScriptHandler::checkComposerVersion"
         ],
         "post-install-cmd": [
-            "DrupalProject\\composer\\ScriptHandler::createRequiredFiles"
+            "MauticProject\\composer\\ScriptHandler::createRequiredFiles"
         ],
         "post-update-cmd": [
-            "DrupalProject\\composer\\ScriptHandler::createRequiredFiles"
+            "MauticProject\\composer\\ScriptHandler::createRequiredFiles"
         ]
     },
     "extra": {
         "composer-exit-on-patch-failure": true,
         "patchLevel": {
-            "drupal/core": "-p2"
+            "mautic/core": "-p2"
         },
-        "drupal-scaffold": {
+        "mautic-scaffold": {
             "locations": {
                 "web-root": "web/"
             }
         },
         "installer-paths": {
-            "web/core": ["type:drupal-core"],
-            "web/libraries/{$name}": ["type:drupal-library"],
-            "web/modules/contrib/{$name}": ["type:drupal-module"],
-            "web/profiles/contrib/{$name}": ["type:drupal-profile"],
-            "web/themes/contrib/{$name}": ["type:drupal-theme"],
-            "drush/Commands/contrib/{$name}": ["type:drupal-drush"]
+            "web/app": ["type:mautic-core"],
+            "web/plugins/{$name}": ["type:mautic-plugin"],
+            "web/themes/{$name}": ["type:mautic-theme"]
         }
     }
 }

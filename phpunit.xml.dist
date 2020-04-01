@@ -8,7 +8,7 @@
          verbose="true"
         >
     <testsuites>
-        <testsuite name="drupal-composer-project tests">
+        <testsuite name="mautic-composer-project tests">
             <directory>./test/</directory>
         </testsuite>
     </testsuites>

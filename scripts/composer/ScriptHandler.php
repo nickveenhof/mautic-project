@@ -2,61 +2,44 @@
 
 /**
  * @file
- * Contains \DrupalProject\composer\ScriptHandler.
+ * Contains \MauticProject\composer\ScriptHandler.
  */
 
-namespace DrupalProject\composer;
+namespace MauticProject\composer;
 
 use Composer\Script\Event;
 use Composer\Semver\Comparator;
-use Drupal\Core\Site\Settings;
-use DrupalFinder\DrupalFinder;
 use Symfony\Component\Filesystem\Filesystem;
 use Webmozart\PathUtil\Path;
+use MauticFinder\MauticFinder
 
 class ScriptHandler {
 
   public static function createRequiredFiles(Event $event) {
     $fs = new Filesystem();
-    $drupalFinder = new DrupalFinder();
-    $drupalFinder->locateRoot(getcwd());
-    $drupalRoot = $drupalFinder->getDrupalRoot();
+    $mauticFinder = new mauticFinder();
+    $mauticFinder->locateRoot(getcwd());
+    $mauticRoot = $mauticFinder->getmauticRoot();
 
     $dirs = [
-      'modules',
-      'profiles',
+      'plugins',
       'themes',
     ];
 
     // Required for unit testing
     foreach ($dirs as $dir) {
-      if (!$fs->exists($drupalRoot . '/'. $dir)) {
-        $fs->mkdir($drupalRoot . '/'. $dir);
-        $fs->touch($drupalRoot . '/'. $dir . '/.gitkeep');
+      if (!$fs->exists($mauticRoot . '/'. $dir)) {
+        $fs->mkdir($mauticRoot . '/'. $dir);
+        $fs->touch($mauticRoot . '/'. $dir . '/.gitkeep');
       }
     }
 
-    // Prepare the settings file for installation
-    if (!$fs->exists($drupalRoot . '/sites/default/settings.php') && $fs->exists($drupalRoot . '/sites/default/default.settings.php')) {
-      $fs->copy($drupalRoot . '/sites/default/default.settings.php', $drupalRoot . '/sites/default/settings.php');
-      require_once $drupalRoot . '/core/includes/bootstrap.inc';
-      require_once $drupalRoot . '/core/includes/install.inc';
-      new Settings([]);
-      $settings['settings']['config_sync_directory'] = (object) [
-        'value' => Path::makeRelative($drupalFinder->getComposerRoot() . '/config/sync', $drupalRoot),
-        'required' => TRUE,
-      ];
-      drupal_rewrite_settings($settings, $drupalRoot . '/sites/default/settings.php');
-      $fs->chmod($drupalRoot . '/sites/default/settings.php', 0666);
-      $event->getIO()->write("Created a sites/default/settings.php file with chmod 0666");
-    }
-
     // Create the files directory with chmod 0777
-    if (!$fs->exists($drupalRoot . '/sites/default/files')) {
+    if (!$fs->exists($mauticRoot . '/media')) {
       $oldmask = umask(0);
-      $fs->mkdir($drupalRoot . '/sites/default/files', 0777);
+      $fs->mkdir($mauticRoot . '/media', 0777);
       umask($oldmask);
-      $event->getIO()->write("Created a sites/default/files directory with chmod 0777");
+      $event->getIO()->write("Created a media directory with chmod 0777");
     }
   }
 
@@ -66,8 +49,8 @@ class ScriptHandler {
    * Composer 1.0.0 and higher consider a `composer install` without having a
    * lock file present as equal to `composer update`. We do not ship with a lock
    * file to avoid merge conflicts downstream, meaning that if a project is
-   * installed with an older version of Composer the scaffolding of Drupal will
-   * not be triggered. We check this here instead of in drupal-scaffold to be
+   * installed with an older version of Composer the scaffolding of Mautic will
+   * not be triggered. We check this here instead of in mautic-scaffold to be
    * able to give immediate feedback to the end user, rather than failing the
    * installation after going through the lengthy process of compiling and
    * downloading the Composer dependencies.
@@ -92,7 +75,7 @@ class ScriptHandler {
       $io->writeError('<warning>You are running a development version of Composer. If you experience problems, please update Composer to the latest stable version.</warning>');
     }
     elseif (Comparator::lessThan($version, '1.0.0')) {
-      $io->writeError('<error>Drupal-project requires Composer version 1.0.0 or higher. Please update your Composer before continuing</error>.');
+      $io->writeError('<error>Mautic-project requires Composer version 1.0.0 or higher. Please update your Composer before continuing</error>.');
       exit(1);
     }
   }

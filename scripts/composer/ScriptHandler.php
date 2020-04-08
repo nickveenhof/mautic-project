@@ -54,7 +54,6 @@ class ScriptHandler
         $composerRoot = $mauticFinder->getComposerRoot();
 
         $dirsToMoveToRoot = [
-            'bin',
             '.github',
             'var',
         ];

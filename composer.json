@@ -42,11 +42,15 @@
     ],
     "post-install-cmd": [
       "MauticProject\\composer\\ScriptHandler::createRequiredFiles",
-      "MauticProject\\composer\\ScriptHandler::moveFilesToProjectRoot"
+      "MauticProject\\composer\\ScriptHandler::moveFilesToProjectRoot",
+      "Sensio\\Bundle\\DistributionBundle\\Composer\\ScriptHandler::buildBootstrap",
+      "Sensio\\Bundle\\DistributionBundle\\Composer\\ScriptHandler::clearCache"
     ],
     "post-update-cmd": [
       "MauticProject\\composer\\ScriptHandler::createRequiredFiles",
-      "MauticProject\\composer\\ScriptHandler::moveFilesToProjectRoot"
+      "MauticProject\\composer\\ScriptHandler::moveFilesToProjectRoot",
+      "Sensio\\Bundle\\DistributionBundle\\Composer\\ScriptHandler::buildBootstrap",
+      "Sensio\\Bundle\\DistributionBundle\\Composer\\ScriptHandler::clearCache"
     ]
   },
   "repositories": {
@@ -119,6 +123,11 @@
         "Make sure the lifetime interval is an integer": "https://github.com/nickveenhof/mautic/pull/2.patch",
         "Allow vendor for saml credentialsstore to also live one level higher": "https://patch-diff.githubusercontent.com/raw/nickveenhof/mautic/pull/3.patch"
       }
-    }
+    },
+    "symfony-app-dir": "public/app",
+    "symfony-bin-dir": "public/bin",
+    "symfony-web-dir": "../",
+    "symfony-var-dir": "var",
+    "symfony-assets-install": "relative"
   }
 }

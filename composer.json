@@ -105,9 +105,6 @@
       ]
     },
     "merge-plugin": {
-      "include": [
-        "public/composer.json"
-      ],
       "recurse": true,
       "replace": false,
       "ignore-duplicates": false,

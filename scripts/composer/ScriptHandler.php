@@ -65,14 +65,14 @@ class ScriptHandler
 
         // Required for unit testing
         foreach ($dirsToMoveToRoot as $dir) {
-            if (!$fs->exists($mauticRoot . '/' . $dir)) {
+            if ($fs->exists($mauticRoot . '/' . $dir) && !$fs->exists($composerRoot . '/' . $dir)) {
                 $fs->rename($mauticRoot . '/' . $dir, $composerRoot . '/' . $dir);
             }
         }
 
         // Required for unit testing
         foreach ($dirsToDelete as $dir) {
-            if (!$fs->exists($mauticRoot . '/' . $dir)) {
+            if ($fs->exists($mauticRoot . '/' . $dir)) {
                 $fs->remove($mauticRoot . '/' . $dir);
             }
         }

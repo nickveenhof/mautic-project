@@ -24,3 +24,6 @@
 /codeception.yml
 /phpstan.neon
 /rector.yaml
+
+# Ignore osx files
+/.DS_Store

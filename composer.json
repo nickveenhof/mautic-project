@@ -19,7 +19,7 @@
     "webmozart/path-util": "^2.3",
     "vlucas/phpdotenv": "^4.0",
     "wikimedia/composer-merge-plugin": "^1.4",
-    "symfony/twig-bridge": "2.8"
+    "symfony/twig-bridge": "~2.8"
   },
   "minimum-stability": "dev",
   "prefer-stable": true,

@@ -55,7 +55,6 @@ class ScriptHandler
 
         $dirsToMoveToRoot = [
             '.github',
-            'var',
         ];
 
         $dirsToDelete = [

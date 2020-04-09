@@ -1,26 +1,34 @@
 <?php
-
+// Do not allow this to be run, at all.
 /*
  * @copyright   2014 Mautic, NP
  * @author      Mautic
  * @license     GNU/GPLv3 http://www.gnu.org/licenses/gpl-3.0.html
  */
-// Replaced & Commented out as it opens up security risks when deployed by default.
-/*define('MAUTIC_ROOT_DIR', __DIR__);
+/*define('MAUTIC_ROOT_DIR', __DIR__);*/
 
 // Fix for hosts that do not have date.timezone set, it will be reset based on users settings
-date_default_timezone_set('UTC');
+/*date_default_timezone_set('UTC');
 
-require_once __DIR__.'/autoload.php';
-
-use Mautic\CoreBundle\ErrorHandler\ErrorHandler;
 use Mautic\Middleware\MiddlewareBuilder;
-use function Stack\run;
 
-if (extension_loaded('apcu') && in_array(@$_SERVER['REMOTE_ADDR'], ['127.0.0.1', '::1', '172.17.0.1'])) {
-    @apcu_clear_cache();
+$loader = require_once __DIR__.'/vendor/autoload.php';
+*/
+
+/*
+ * If you don't want to setup permissions the proper way, just uncomment the following PHP line
+ * read http://symfony.com/doc/current/book/installation.html#configuration-and-setup for more information
+ */
+/*umask(0000);
+
+if (extension_loaded('apc') && in_array(@$_SERVER['REMOTE_ADDR'], ['127.0.0.1', '::1', '172.17.0.1'])) {
+    @apc_clear_cache();
+    @apc_clear_cache('user');
+    @apc_clear_cache('opcode');
 }
 
-ErrorHandler::register('dev');
+\Mautic\CoreBundle\ErrorHandler\ErrorHandler::register('dev');
 
-run((new MiddlewareBuilder(new AppKernel('dev', true)))->resolve());*/
+$kernel = new AppKernel('dev', true);
+
+Stack\run((new MiddlewareBuilder('dev'))->resolve($kernel));*/

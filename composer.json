@@ -10,15 +10,16 @@
     }
   ],
   "require": {
-    "php": ">=7.0.8",
-    "mautic/core": "dev-3.x-13750",
+    "php": ">=5.6.19 <7.4",
+    "mautic/core": "dev-staging-13750",
     "nickveenhof/mautic-core-composer-scaffold": "dev-master",
     "nickveenhof/mautic-finder": "dev-master",
     "composer/installers": "dev-patch-1",
     "cweagans/composer-patches": "^1.6.5",
     "webmozart/path-util": "^2.3",
     "vlucas/phpdotenv": "^4.0",
-    "wikimedia/composer-merge-plugin": "^1.4"
+    "wikimedia/composer-merge-plugin": "^1.4",
+    "symfony/twig-bridge": "2.8"
   },
   "minimum-stability": "dev",
   "prefer-stable": true,
@@ -90,8 +91,6 @@
         "[project-root]/.travis.yml": "public/.travis.yml",
         "[project-root]/codeception.yml": "public/codeception.yml",
         "[project-root]/LICENSE.txt": "public/LICENSE.txt",
-        "[project-root]/rector.yaml": "public/rector.yaml",
-        "[project-root]/phpstan.neon": "public/phpstan.neon",
         "[web-root]/app/config/config_override.php": "scaffold-assets/config_override.php",
         "[web-root]/app/autoload.php": "scaffold-assets/autoload.php",
         "[web-root]/index_dev.php": "scaffold-assets/index_dev.php"
@@ -120,14 +119,13 @@
     "patches": {
       "mautic/core": {
         "Allow composer to live one level higher": "https://patch-diff.githubusercontent.com/raw/nickveenhof/mautic/pull/1.patch",
-        "Make sure the lifetime interval is an integer": "https://github.com/nickveenhof/mautic/pull/2.patch",
-        "Allow vendor for saml credentialsstore to also live one level higher": "https://patch-diff.githubusercontent.com/raw/nickveenhof/mautic/pull/3.patch"
+        "Make sure the lifetime interval is an integer": "https://github.com/nickveenhof/mautic/pull/2.patch"
+      },
+      "doctrine/orm": {
+        "#6991 Support PHP 7.3 without dropping support for 5.6/7.0": "https://github.com/doctrine/doctrine2/commit/07fc401d255a4cdb4a557147d1c8a3fc7a0c718d.diff"
       }
     },
     "symfony-app-dir": "public/app",
-    "symfony-bin-dir": "public/bin",
-    "symfony-web-dir": "../",
-    "symfony-var-dir": "var",
-    "symfony-assets-install": "relative"
+    "symfony-web-dir": "../"
   }
 }

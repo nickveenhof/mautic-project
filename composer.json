@@ -116,7 +116,7 @@
     "patches": {
       "mautic/core": {
         "Allow composer to live one level higher": "https://patch-diff.githubusercontent.com/raw/nickveenhof/mautic/pull/1.patch",
-        "Make sure the lifetime interval is an integer": "https://github.com/nickveenhof/mautic/pull/2.patch",
+        "Make sure the lifetime interval is an integer": "https://patch-diff.githubusercontent.com/raw/mautic/mautic/pull/8665.patch",
         "Allow vendor for saml credentialsstore to also live one level higher": "https://patch-diff.githubusercontent.com/raw/nickveenhof/mautic/pull/3.patch"
       }
     },

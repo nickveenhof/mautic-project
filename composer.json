@@ -11,7 +11,7 @@
   ],
   "require": {
     "php": ">=7.0.8",
-    "mautic/core": "dev-3.x-13750",
+    "mautic/core": "dev-3.x",
     "nickveenhof/mautic-core-composer-scaffold": "dev-master",
     "nickveenhof/mautic-finder": "dev-master",
     "composer/installers": "dev-patch-1",
@@ -57,10 +57,6 @@
     "composer/installers": {
       "type": "git",
       "url": "git@github.com:nickveenhof/installers.git"
-    },
-    "mautic/core": {
-      "type": "git",
-      "url": "git@github.com:nickveenhof/mautic.git"
     },
     "willdurand/oauth-server-bundle": {
       "type": "git",

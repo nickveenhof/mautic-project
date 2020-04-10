@@ -11,10 +11,10 @@
   ],
   "require": {
     "php": ">=7.0.8",
-    "mautic/core": "dev-3.x",
-    "nickveenhof/mautic-core-composer-scaffold": "dev-master",
-    "nickveenhof/mautic-finder": "dev-master",
-    "composer/installers": "dev-patch-1",
+    "mautic/core": "3.x-dev",
+    "nickveenhof/mautic-core-composer-scaffold": "^0.1",
+    "nickveenhof/mautic-finder": "^0.1",
+    "composer/installers": "^1.9",
     "cweagans/composer-patches": "^1.6.5",
     "webmozart/path-util": "^2.3",
     "vlucas/phpdotenv": "^4.0",
@@ -54,10 +54,6 @@
     ]
   },
   "repositories": {
-    "composer/installers": {
-      "type": "git",
-      "url": "git@github.com:nickveenhof/installers.git"
-    },
     "willdurand/oauth-server-bundle": {
       "type": "git",
       "url": "https://github.com/mautic/BazingaOAuthServerBundle.git"
@@ -118,6 +114,9 @@
         "Allow composer to live one level higher": "https://patch-diff.githubusercontent.com/raw/nickveenhof/mautic/pull/1.patch",
         "Make sure the lifetime interval is an integer": "https://patch-diff.githubusercontent.com/raw/mautic/mautic/pull/8665.patch",
         "Allow vendor for saml credentialsstore to also live one level higher": "https://patch-diff.githubusercontent.com/raw/nickveenhof/mautic/pull/3.patch"
+      },
+      "composer/installers": {
+        "Allow placement of mautic/core": "https://patch-diff.githubusercontent.com/raw/composer/installers/pull/454.patch"
       }
     },
     "symfony-app-dir": "public/app",

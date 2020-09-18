@@ -1,6 +1,6 @@
 {
   "name": "nickveenhof/mautic-project",
-  "description": "Project template for Mautic 2 projects with composer",
+  "description": "Project template for Mautic 3 projects with composer",
   "type": "project",
   "license": "GPL-2.0-or-later",
   "authors": [
@@ -10,7 +10,7 @@
     }
   ],
   "require": {
-    "php": ">=7.0.8",
+    "php": ">=7.2.21 <7.4",
     "mautic/core": "3.x-dev",
     "nickveenhof/mautic-core-composer-scaffold": "^0.1",
     "nickveenhof/mautic-finder": "^0.1",

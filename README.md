@@ -115,14 +115,14 @@ section of composer.json:
 
 ### How do I specify a PHP version ?
 
-This project supports PHP 7.0 as minimum version, however it's possible that a `composer update` will upgrade some package that will then require PHP 7+.
+This project supports PHP 7.2.21 as minimum version, however it's possible that a `composer update` will upgrade some package that will then require PHP 7+.
 
 To prevent this you can add this code to specify the PHP version you want to use in the `config` section of `composer.json`:
 ```json
 "config": {
     "sort-packages": true,
     "platform": {
-        "php": "7.0.33"
+        "php": "7.2.21"
     }
 },
 ```

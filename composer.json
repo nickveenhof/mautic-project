@@ -10,7 +10,7 @@
     }
   ],
   "require": {
-    "php": ">=7.2.21 <7.5",
+    "php": ">=7.3 <7.5",
     "mautic/core": "3.3.1",
     "nickveenhof/mautic-core-composer-scaffold": "^0.1",
     "nickveenhof/mautic-finder": "^0.1",
